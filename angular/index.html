@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html ng-app="MainApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo MEAN</title>
+    <!-- Cargamos bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <!-- Cargamos angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <!-- Cargamos el javascript de angular -->
+    <script src="coresubject.js"></script>
+
+</head>
+<body ng-controller="subjectController">
+<div class="container">
+
+    <div class="jumbotron text-center" ng-prueba>
+        <h1>Nº de Asignaturas: <span class="label label-success"><!--{{ subject.length }}--></span></h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-1">
+            <table class="table table-striped">
+                <tr class="info">
+                    <td>Asignatura</td>
+                    <td>Alumno</td>
+                    <td>Detalles</td>
+                </tr>
+                <tr ng-repeat="subject in subjects" ng-click="selectAsignatura(asignatura)">
+                    <td>{{ subject.asignatura }}</td>
+                    <td>{{ subject.students }}</td>
+                    <!--td>{{ persona.edad }}</td-->
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4 col-sm-offset-1 text-center">
+            <form name="myForm">
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg text-center" placeholder="Asignatura" ng-model="newasignatura.asignatura" required>
+                    <br>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Alumno" ng-model="newasignatura.students" required>
+                    <br>
+
+                </div>
+
+                <!-- Acciones que podemos realizar en el formulario -->
+                <button type="submit" class="btn btn-success btn-lg" ng-click="registrarAsignatura()" ng-disabled="myForm.$invalid || selected">Registrar</button>
+                <!--button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newasignatura)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button-->
+                <!--button type="submit" class="btn btn-danger btn-lg" ng-click="borrarAsignatura(newasignatura)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button-->
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
