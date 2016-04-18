@@ -13,12 +13,17 @@ module.exports = function(app) {
     // Borrar una Persona
     app.delete('/api/persona/:persona_id', Controller.removePersona);
     // Listar  Asignaturas
-    app.get('/api/subject', Controller.getAsignatura);
+    app.get('/api/subject', Controller.getAsignaturas);
     // Listar  una Asignatura
-    //app.get('/api/subject:subject_id', Controller.getAsignatura);
+    app.get('/api/subject:subject_id', Controller.getAsignatura);
     // Crear una Asignatura
     app.post('/api/subject', Controller.setAsignatura);
+    // Borrar una ASignatura
+    app.delete('/api/subject/:subject_id', Controller.removeAsignatura);
+    // Modificar los datos de una Persona
+    //app.put('/api/subject/:subject_id', Controller.updateAsignatura);
     // application
+
     app.get('*', function(req, res) {
         res.sendfile('./angular/index.html'); // Carga única de la vista
     });

@@ -66,11 +66,15 @@
                 <tr class="info2">
                     <td>Asignatura</td>
                     <td>Alumno</td>
+                    <td>Detalles</td>
 
                 </tr>
                 <tr ng-repeat="subject in Asignaturas" ng-click="selectAsignatura(subject)">
                     <td>{{subject.asignatura}}</td>
                     <td>{{subject.students}}</td>
+                    <td> <button type="submit" class="btn btn-success btn-lg" ng-click="getAsignatura()">Detalles</button>
+                    </td>
+
                 </tr>
             </table>
         </div>
@@ -86,8 +90,8 @@
 
                 <!-- Acciones que podemos realizar en el formulario -->
                 <button type="submit" class="btn btn-success btn-lg" ng-click="registrarAsignatura()" ng-disabled="myForm2.$invalid || selected">Registrar</button>
-                <!--button type="submit" class="btn btn-warning btn-lg" ng-click="modificarPersona(newasignatura)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Modificar</button-->
-                <!--button type="submit" class="btn btn-danger btn-lg" ng-click="borrarAsignatura(newasignatura)" ng-disabled="!newPersona.nombre || !newPersona.apellido || !newPersona.edad || !selected">Borrar</button-->
+                <button type="submit" class="btn btn-warning btn-lg" ng-click="modificarAsignatura(newAsignatura)" ng-disabled="!newAsignatura.asignatura || !newAsignatura.students || !selected">Modificar</button>
+                <button type="submit" class="btn btn-danger btn-lg" ng-click="borrarAsignatura(newAsignatura)" ng-disabled="!newAsignatura.asignatura || !newAsignatura.students || !selected">Borrar</button>
             </form>
         </div>
     </div>

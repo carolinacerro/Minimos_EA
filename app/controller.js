@@ -61,7 +61,7 @@ exports.removePersona = function(req, res) {
     });
 }
 
-exports.getAsignatura= function (req, res){
+exports.getAsignaturas= function (req, res){
     Asignatura.find(
         function(err, asignatura) {
             if (err)
@@ -71,6 +71,19 @@ exports.getAsignatura= function (req, res){
     );
 }
 
+exports.getAsignatura= function (req, res){
+    Asignatura.find( {_id : req.params.subject_id}, function(err, persona)
+    {
+        if (err)
+            res.send(err);
+        // Obtine y devuelve todas las personas tras borrar una de ellas
+        Asignatura.find(function(err, persona) {
+            if (err)
+                res.send(err)
+            res.json(persona);
+        });
+    });
+}
 
 
 
@@ -92,3 +105,18 @@ exports.setAsignatura = function(req, res) {
         });
 
 }
+// Elimino un objeto Persona de la base de Datos
+exports.removeAsignatura = function(req, res) {
+    Asignatura.remove({_id : req.params.subject_id}, function(err, persona) {
+        if (err)
+            res.send(err);
+        // Obtine y devuelve todas las personas tras borrar una de ellas
+        Asignatura.find(function(err, persona) {
+            if (err)
+                res.send(err)
+            res.json(persona);
+        });
+    });
+}
+
+
