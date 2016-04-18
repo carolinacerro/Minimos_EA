@@ -1,4 +1,5 @@
-var Persona = require('./modelo/student');
+var Persona = require('./modelo/persona');
+var Asignatura = require('./modelo/subject');
 
 // Obtiene todos los objetos Persona de la base de datos
 exports.getPersona = function (req, res){
@@ -16,7 +17,7 @@ exports.setPersona = function(req, res) {
 
     // Creo el objeto Persona
     Persona.create(
-        {nombre : req.body.nombre,address: req.body.address},
+        {nombre : req.body.nombre,direccion: req.body.address, edad: req.body.phone.home},
         function(err, persona) {
             if (err)
                 res.send(err);
@@ -33,7 +34,7 @@ exports.setPersona = function(req, res) {
 // Modificamos un objeto Persona de la base de datos
 exports.updatePersona = function(req, res){
     Persona.update( {_id : req.params.persona_id},
-        {$set:{nombre : req.body.nombre,address: req.body.address}},
+        {$set:{nombre : req.body.nombre,direccion: req.body.address, edad: req.body.phone.home}},
         function(err, persona) {
             if (err)
                 res.send(err);
@@ -48,18 +49,18 @@ exports.updatePersona = function(req, res){
 
 // Elimino un objeto Persona de la base de Datos
 exports.removePersona = function(req, res) {
-    Persona.remove({_id: req.params.persona_id}, function (err, persona) {
+    Persona.remove({_id : req.params.persona_id}, function(err, persona) {
         if (err)
             res.send(err);
         // Obtine y devuelve todas las personas tras borrar una de ellas
-        Persona.find(function (err, persona) {
+        Persona.find(function(err, persona) {
             if (err)
                 res.send(err)
             res.json(persona);
         });
     });
 }
-var Asignatura = require('./modelo/subject');
+
 
 // Obtiene asignaturas de la base de datos
 exports.getAsignatura = function (req, res){
@@ -72,16 +73,17 @@ exports.getAsignatura = function (req, res){
     );
 }
 
-// Guarda Asignaturas en base de datos
+// Guarda un objeto Persona en base de datos
 exports.setAsignatura = function(req, res) {
-    // Creo Asignatura
+
+    // Creo el objeto Persona
     Asignatura.create(
-        {asignatura : req.body.asignatura, alumno : req.body.alumno},
+        {asignatura : req.body.asignatura, alumno: req.body.students},
         function(err, asignatura) {
             if (err)
                 res.send(err);
             // Obtine y devuelve todas las personas tras crear una de ellas
-            asignatura.find(function(err, asignatura) {
+            Persona.find(function(err, asignatura) {
                 if (err)
                     res.send(err)
                 res.json(asignatura);

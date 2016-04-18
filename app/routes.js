@@ -1,23 +1,23 @@
-var student = require('./modelo/student');
-var subject = require('./modelo/subject');
+var persona = require('./modelo/persona');
+var Asignatura = require('./modelo/subject');
 var Controller = require ('./controller');
 
 module.exports = function(app) {
 
     // devolver todos los Personas
-    app.get('/api/student', Controller.getStudent);
+    app.get('/api/persona', Controller.getPersona);
     // Crear una nueva Persona
-    app.post('/api/student', Controller.setStudent);
+    app.post('/api/persona', Controller.setPersona);
     // Modificar los datos de una Persona
-    app.put('/api/student/:student_id', Controller.updateStudent);
+    app.put('/api/persona/:persona_id', Controller.updatePersona);
     // Borrar una Persona
-    app.delete('/api/student/:student_id', Controller.removeStudent);
+    //app.delete('/api/persons/:persona_id', Controller.removePersona());
     // devolver Asignaturas
-    app.get('/api/subject', Controller.getSubject);
+   // app.get('/api/subject', Controller.getAsignatura());
     // Listar una Asignatura
-    app.get('/api/subject/:subject_id', Controller.getSubject);
+    app.get('/api/subject/:subject_id', Controller.getAsignatura);
     // Crear una Asignatura
-    app.post('/api/subject', Controller.setSubject);
+    app.post('/api/subject', Controller.setAsignatura);
     // application
     app.get('*', function(req, res) {
         res.sendfile('./angular/index.html'); // Carga única de la vista
