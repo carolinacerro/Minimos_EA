@@ -13,10 +13,11 @@
     <script src="core.js"></script>
 
 </head>
-<body ng-controller="mainController">
+<body>
+<div ng-controller="mainController">
 <div class="container">
 
-    <div class="jumbotron text-center" ng-prueba>
+    <div class="jumbotron text-center" >
         <h1>Nº de Registros: <span class="label label-success">{{ personas.length }}</span></h1>
     </div>
 
@@ -54,12 +55,10 @@
         </div>
     </div>
 </div>
-</body>
-<body ng-controller="mainController2">
 <div class="container">
 
-    <div class="jumbotron text-center" ng-prueba>
-        <h1>Nº de Asignaturas: <span class="label label-success">{{subject.length}}</span></h1>
+    <div class="jumbotron text-center" >
+        <h1>Nº de Asignaturas: <span class="label label-success">{{ Asignaturas.length }}</span></h1>
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
@@ -67,12 +66,11 @@
                 <tr class="info2">
                     <td>Asignatura</td>
                     <td>Alumno</td>
-                    <td>Detalles</td>
+
                 </tr>
-                <tr ng-repeat="subject in subjects" ng-click="selectAsignatura(asignatura)">
+                <tr ng-repeat="subject in Asignaturas" ng-click="selectAsignatura(subject)">
                     <td>{{subject.asignatura}}</td>
                     <td>{{subject.students}}</td>
-                    <th><button type="button">View</button></th>
                 </tr>
             </table>
         </div>
@@ -93,6 +91,7 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

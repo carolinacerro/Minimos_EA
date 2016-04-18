@@ -6,9 +6,11 @@ function mainController($scope, $http) {
     $scope.newAsignatura = {};
     $scope.Asignaturas = {};
     $scope.selected = false;
+    $scope.testy=5;
 
     // Obtenemos todos los datos de la base de datos
     $http.get('/api/persona').success(function(data) {
+        console.log(data);
             $scope.personas = data;
         })
         .error(function(data) {
@@ -62,12 +64,14 @@ function mainController($scope, $http) {
 
     // Obtenemos todos los datos de la base de datos
     $http.get('/api/subject').success(function(data) {
-        console.log(data);
-            $scope.Asignaturas = data;
+
+        $scope.Asignaturas= data;
+            console.log($scope.Asignaturas);
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
+
 
     // Función para registrar a una Asignatura
     $scope.registrarAsignatura = function() {
@@ -84,55 +88,7 @@ function mainController($scope, $http) {
 
     // Función que borra un objeto asignatura conocido su id
     $scope.borrarAsignatura = function(newAsignatura) {
-        $http.delete('/api/asignatura/' + $scope.newAsignatura._id)
-            .success(function(data) {
-                $scope.newAsignatura = {};
-                $scope.Asignaturas = data;
-                $scope.selected = false;
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
-
-    // Función para coger el objeto seleccionado en la tabla
-    $scope.selectAsignatura = function(asignatura) {
-        $scope.newAsignatura = asignatura;
-        $scope.selected = true;
-        console.log($scope.newAsignatura, $scope.selected);
-    };
-}
-function mainController2($scope, $http) {
-    $scope.newAsignatura = {};
-    $scope.Asignaturas = {};
-    $scope.selected = false;
-
-
-    // Obtenemos todos los datos de la base de datos
-    $http.get('/api/subject').success(function(data) {
-            console.log(data);
-            $scope.Asignaturas = data;
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });
-
-    // Función para registrar a una Asignatura
-    $scope.registrarAsignatura = function() {
-        $http.post('/api/subject', $scope.newAsignatura)
-            .success(function(data) {
-                $scope.newAsignatura = {}; // Borramos los datos del formulario
-                $scope.Assignaturas = data;
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
-
-
-    // Función que borra un objeto asignatura conocido su id
-    $scope.borrarAsignatura = function(newAsignatura) {
-        $http.delete('/api/asignatura/' + $scope.newAsignatura._id)
+        $http.delete('/api/subject/' + $scope.newAsignatura._id)
             .success(function(data) {
                 $scope.newAsignatura = {};
                 $scope.Asignaturas = data;
