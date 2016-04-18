@@ -79,7 +79,7 @@ exports.setAsignatura = function(req, res) {
 
     // Creo el objeto Asignatura
     Asignatura.create(
-        {asignatura : req.body.asignatura},
+        {asignatura : req.body.asignatura, students: req.body.students},
         function(err, asignatura) {
             if (err)
                 res.send(err);

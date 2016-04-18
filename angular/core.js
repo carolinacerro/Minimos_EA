@@ -3,8 +3,8 @@ angular.module('MainApp', [])
 function mainController($scope, $http) {
     $scope.newPersona = {};
     $scope.personas = {};
-    $scope.newasignatura = {};
-    $scope.asignaturas = {};
+    $scope.newAsignatura = {};
+    $scope.Asignaturas = {};
     $scope.selected = false;
 
     // Obtenemos todos los datos de la base de datos
@@ -62,18 +62,18 @@ function mainController($scope, $http) {
 
     // Obtenemos todos los datos de la base de datos
     $http.get('/api/subject').success(function(data) {
-            $scope.asignaturas = data;
+            $scope.Asignaturas = data;
         })
         .error(function(data) {
             console.log('Error: ' + data);
         });
 
-    // Función para registrar a una persona
+    // Función para registrar a una Asignatura
     $scope.registrarAsignatura = function() {
-        $http.post('/api/subject', $scope.newasignatura)
+        $http.post('/api/subject', $scope.newAsignatura)
             .success(function(data) {
-                $scope.newasignatura = {}; // Borramos los datos del formulario
-                $scope.assignaturas = data;
+                $scope.newAsignatura = {}; // Borramos los datos del formulario
+                $scope.Assignaturas = data;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -81,12 +81,12 @@ function mainController($scope, $http) {
     };
 
 
-    // Función que borra un objeto persona conocido su id
-    $scope.borrarAsignatura = function(newasignatura) {
-        $http.delete('/api/asignatura/' + $scope.newasignatura._id)
+    // Función que borra un objeto asignatura conocido su id
+    $scope.borrarAsignatura = function(newAsignatura) {
+        $http.delete('/api/asignatura/' + $scope.newAsignatura._id)
             .success(function(data) {
-                $scope.newasignatura = {};
-                $scope.asignaturas = data;
+                $scope.newAsignatura = {};
+                $scope.Asignaturas = data;
                 $scope.selected = false;
             })
             .error(function(data) {
@@ -95,9 +95,9 @@ function mainController($scope, $http) {
     };
 
     // Función para coger el objeto seleccionado en la tabla
-    $scope.selectAsignatura = function(asignatura) {
+    $scope.selectAsignatur = function(asignatura) {
         $scope.newAsignatura = asignatura;
         $scope.selected = true;
-        console.log($scope.newasignatura, $scope.selected);
+        console.log($scope.newAsignatura, $scope.selected);
     };
 }

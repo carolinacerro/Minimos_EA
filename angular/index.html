@@ -69,19 +69,19 @@
                     <td>Alumno</td>
                     <td>Detalles</td>
                 </tr>
-                <tr ng-repeat="subject in subjects" ng-click="selectAsignatura(asignatura)">
+                <tr ng-repeat="subject in subjects" ng-click="selectAsignatur(asignatura)">
                     <td>{{ subject.asignatura }}</td>
                     <td>{{ subject.students }}</td>
-                    <th><button type="button" class="btn " ng-click="clickToView(asignatura)" >View</button></th>
+                    <th><button type="button">View</button></th>
                 </tr>
             </table>
         </div>
         <div class="col-sm-4 col-sm-offset-1 text-center">
             <form name="myForm2">
                 <div class="form-group1">
-                    <input type="text" class="form-control input-lg text-center" placeholder="Asignatura" ng-model="newasignatura.asignatura" required>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Asignatura" ng-model="newAsignatura.asignatura" required>
                     <br>
-                    <input type="text" class="form-control input-lg text-center" placeholder="Alumno" ng-model="newasignatura.students" required>
+                    <input type="text" class="form-control input-lg text-center" placeholder="Alumno" ng-model="newAsignatura.students" required>
                     <br>
 
                 </div>
