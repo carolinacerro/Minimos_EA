@@ -17,7 +17,7 @@ exports.setPersona = function(req, res) {
 
     // Creo el objeto Persona
     Persona.create(
-        {nombre : req.body.nombre,direccion: req.body.address, edad: req.body.phone.home},
+        {nombre : req.body.nombre,direccion: req.body.direccion, telefono: req.body.telefono, },
         function(err, persona) {
             if (err)
                 res.send(err);
@@ -34,7 +34,7 @@ exports.setPersona = function(req, res) {
 // Modificamos un objeto Persona de la base de datos
 exports.updatePersona = function(req, res){
     Persona.update( {_id : req.params.persona_id},
-        {$set:{nombre : req.body.nombre,direccion: req.body.address, edad: req.body.phone.home}},
+        {$set:{nombre : req.body.nombre,direccion: req.body.direccion, telefono: req.body.telefono}},
         function(err, persona) {
             if (err)
                 res.send(err);
@@ -61,29 +61,30 @@ exports.removePersona = function(req, res) {
     });
 }
 
-
-// Obtiene asignaturas de la base de datos
-exports.getAsignatura = function (req, res){
+exports.getAsignatura= function (req, res){
     Asignatura.find(
         function(err, asignatura) {
             if (err)
                 res.send(err)
-            res.json(asignatura);
+            res.json(asignatura); // devuelve todas las asignaturas en JSON
         }
     );
 }
 
-// Guarda un objeto Persona en base de datos
+
+
+
+
 exports.setAsignatura = function(req, res) {
 
-    // Creo el objeto Persona
+    // Creo el objeto Asignatura
     Asignatura.create(
-        {asignatura : req.body.asignatura, alumno: req.body.students},
+        {asignatura : req.body.asignatura},
         function(err, asignatura) {
             if (err)
                 res.send(err);
-            // Obtine y devuelve todas las personas tras crear una de ellas
-            Persona.find(function(err, asignatura) {
+
+            Asignatura.find(function(err, asignatura) {
                 if (err)
                     res.send(err)
                 res.json(asignatura);

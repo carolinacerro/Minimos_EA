@@ -1,5 +1,4 @@
-var persona = require('./modelo/persona');
-var Asignatura = require('./modelo/subject');
+var Persona = require('./modelo/persona');
 var Controller = require ('./controller');
 
 module.exports = function(app) {
@@ -11,9 +10,7 @@ module.exports = function(app) {
     // Modificar los datos de una Persona
     app.put('/api/persona/:persona_id', Controller.updatePersona);
     // Borrar una Persona
-    //app.delete('/api/persons/:persona_id', Controller.removePersona());
-    // devolver Asignaturas
-   // app.get('/api/subject', Controller.getAsignatura());
+    app.delete('/api/persona/:persona_id', Controller.removePersona);
     // Listar una Asignatura
     app.get('/api/subject/:subject_id', Controller.getAsignatura);
     // Crear una Asignatura
