@@ -118,5 +118,19 @@ exports.removeAsignatura = function(req, res) {
         });
     });
 }
-
+    // Modificamos un objeto Persona de la base de datos
+//exports.updateAsignatura = function(req, res){
+    //Asignatura.update( {_id : req.params.subject_id},
+      //  {$set:{asignatura : req.body.asignatura,students: req.body.students}},
+        //function(err, persona) {
+          //  if (err)
+            //    res.send(err);
+            // Obtine y devuelve todas las personas tras crear una de ellas
+           // Asignatura.findOneAndUpdate(function(err, asignatura) {
+             //   if (err)
+               //     res.send(err)
+                //res.json(asignatura);
+           // });
+        //});
+//}
 
