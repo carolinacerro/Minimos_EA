@@ -58,9 +58,8 @@
 <div class="container">
 
     <div class="jumbotron text-center" ng-prueba>
-        <h1>Nº de Asignaturas: <span class="label label-success"><!--{{ subject.length }}--></span></h1>
+        <h1>Nº de Asignaturas: <span class="label label-success">{{ subjects.length }}</span></h1>
     </div>
-
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
             <table class="table table-striped">
@@ -69,7 +68,7 @@
                     <td>Alumno</td>
                     <td>Detalles</td>
                 </tr>
-                <tr ng-repeat="subject in subjects" ng-click="selectAsignatur(asignatura)">
+                <tr ng-repeat="subject in subjects" ng-click="selectAsignatura(asignatura)">
                     <td>{{ subject.asignatura }}</td>
                     <td>{{ subject.students }}</td>
                     <th><button type="button">View</button></th>

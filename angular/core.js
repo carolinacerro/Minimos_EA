@@ -62,6 +62,7 @@ function mainController($scope, $http) {
 
     // Obtenemos todos los datos de la base de datos
     $http.get('/api/subject').success(function(data) {
+        console.log(data);
             $scope.Asignaturas = data;
         })
         .error(function(data) {
@@ -95,7 +96,7 @@ function mainController($scope, $http) {
     };
 
     // Función para coger el objeto seleccionado en la tabla
-    $scope.selectAsignatur = function(asignatura) {
+    $scope.selectAsignatura = function(asignatura) {
         $scope.newAsignatura = asignatura;
         $scope.selected = true;
         console.log($scope.newAsignatura, $scope.selected);
