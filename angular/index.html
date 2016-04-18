@@ -54,11 +54,12 @@
         </div>
     </div>
 </div>
-
+</body>
+<body ng-controller="mainController2">
 <div class="container">
 
     <div class="jumbotron text-center" ng-prueba>
-        <h1>Nº de Asignaturas: <span class="label label-success">{{ subject.length }}</span></h1>
+        <h1>Nº de Asignaturas: <span class="label label-success">{{subject.length}}</span></h1>
     </div>
     <div class="row">
         <div class="col-sm-6 col-sm-offset-1">
@@ -69,15 +70,15 @@
                     <td>Detalles</td>
                 </tr>
                 <tr ng-repeat="subject in subjects" ng-click="selectAsignatura(asignatura)">
-                    <td>{{ subject.asignatura }}</td>
-                    <td>{{ subject.students }}</td>
+                    <td>{{subject.asignatura}}</td>
+                    <td>{{subject.students}}</td>
                     <th><button type="button">View</button></th>
                 </tr>
             </table>
         </div>
         <div class="col-sm-4 col-sm-offset-1 text-center">
             <form name="myForm2">
-                <div class="form-group1">
+                <div class="form-group">
                     <input type="text" class="form-control input-lg text-center" placeholder="Asignatura" ng-model="newAsignatura.asignatura" required>
                     <br>
                     <input type="text" class="form-control input-lg text-center" placeholder="Alumno" ng-model="newAsignatura.students" required>
